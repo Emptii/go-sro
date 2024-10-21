@@ -1,8 +1,9 @@
 services:
   db:
-    image: ghcr.io/Emptii/go-sro-db:latest
+    image: ghcr.io/emptii/go-sro-db:latest
     build: 
-      context: ./db
+      context: .
+      dockerfile: ./db/Dockerfile
     restart: no 
     container_name: gosro-db
     networks:
@@ -20,9 +21,10 @@ services:
       MYSQL_PASSWORD: 1234
 
   agent-server:
-    image: ghcr.io/Emptii/go-sro-agent-server:latest
+    image: ghcr.io/emptii/go-sro-agent-server:latest
     build: 
-      context: ./agent-server
+      context: .
+      dockerfile: ./agent-server/Dockerfile
     restart: no
     container_name: gosro-agent-server
     networks:
@@ -44,9 +46,10 @@ services:
       - "/opt/Silkroad_v1.188/drive_c/Program Files (x86)/Silkroad/Data.pk2:/etc/go-sro/Data"
 
   gateway-server:
-    image: ghcr.io/Emptii/go-sro-gateway-server:latest
+    image: ghcr.io/emptii/go-sro-gateway-server:latest
     build: 
-      context: ./gateway-server/
+      context: .
+      dockerfile: ./gateway-server/Dockerfile
     restart: no 
     container_name: gosro-gateway-server
     depends_on:
