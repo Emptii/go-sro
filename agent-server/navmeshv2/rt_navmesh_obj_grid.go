@@ -1,7 +1,7 @@
 package navmeshv2
 
 import (
-	"github.com/ferdoran/go-sro/agent-server/navmesh"
+	"github.com/Emptii/go-sro/agent-server/navmesh"
 	"github.com/g3n/engine/math32"
 )
 

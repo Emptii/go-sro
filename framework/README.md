@@ -24,9 +24,9 @@ Without his packet and file structure documentation this would not have been pos
 
 As this is just a framework, there are also projects taking this framework into use:
 
-- [go-sro-fileutils](https://github.com/ferdoran/go-sro--fileutils)
-- [go-sro-agent-server](https://github.com/ferdoran/go-sro--agent-server)
-- [go-sro-gateway-server](https://github.com/ferdoran/go-sro--gateway-server)
+- [go-sro-fileutils](https://github.com/Emptii/go-sro--fileutils)
+- [go-sro-agent-server](https://github.com/Emptii/go-sro--agent-server)
+- [go-sro-gateway-server](https://github.com/Emptii/go-sro--gateway-server)
 
 ## Contribution
 

@@ -1,6 +1,6 @@
 package main
 
-import "github.com/ferdoran/go-sro/agent-server/navmeshv2/viewer"
+import "github.com/Emptii/go-sro/agent-server/navmeshv2/viewer"
 
 func main() {
 	viewer.Main()

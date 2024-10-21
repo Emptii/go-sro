@@ -1,8 +1,8 @@
 package client
 
 import (
-	"github.com/ferdoran/go-sro/framework/network"
-	"github.com/ferdoran/go-sro/framework/network/opcode"
+	"github.com/Emptii/go-sro/framework/network"
+	"github.com/Emptii/go-sro/framework/network/opcode"
 )
 
 type BackendClient struct {

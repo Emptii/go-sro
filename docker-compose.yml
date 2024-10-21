@@ -1,8 +1,9 @@
-version: "3"
 services:
   db:
-    image: ferdoran/go-sro-db:latest
-    restart: always
+    image: ghcr.io/Emptii/go-sro-db:latest
+    build: 
+      context: ./db
+    restart: no 
     container_name: gosro-db
     networks:
       - gosro
@@ -19,8 +20,10 @@ services:
       MYSQL_PASSWORD: 1234
 
   agent-server:
-    image: ferdoran/go-sro-agent-server:latest
-    restart: always
+    image: ghcr.io/Emptii/go-sro-agent-server:latest
+    build: 
+      context: ./agent-server
+    restart: no
     container_name: gosro-agent-server
     networks:
       - gosro
@@ -36,12 +39,15 @@ services:
       DB_ACCOUNT_HOST: db
       DB_SHARD_HOST: db
       AGENT_HOST: agent-server
+      LOG_LEVEL: debug
     volumes:
-    - /path/to/data/folder:/etc/agent-server/Data
+      - "/opt/Silkroad_v1.188/drive_c/Program Files (x86)/Silkroad/Data.pk2:/etc/go-sro/Data"
 
   gateway-server:
-    image: ferdoran/go-sro-gateway-server:latest
-    restart: always
+    image: ghcr.io/Emptii/go-sro-gateway-server:latest
+    build: 
+      context: ./gateway-server/
+    restart: no 
     container_name: gosro-gateway-server
     depends_on:
       - db

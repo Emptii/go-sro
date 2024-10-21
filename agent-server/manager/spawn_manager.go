@@ -1,10 +1,10 @@
 package manager
 
 import (
-	"github.com/ferdoran/go-sro/agent-server/model"
-	"github.com/ferdoran/go-sro/agent-server/service"
-	"github.com/ferdoran/go-sro/framework/network"
-	"github.com/ferdoran/go-sro/framework/network/opcode"
+	"github.com/Emptii/go-sro/agent-server/model"
+	"github.com/Emptii/go-sro/agent-server/service"
+	"github.com/Emptii/go-sro/framework/network"
+	"github.com/Emptii/go-sro/framework/network/opcode"
 	"github.com/sirupsen/logrus"
 	"sync"
 	"time"

@@ -1,9 +1,9 @@
 package character
 
 import (
-	"github.com/ferdoran/go-sro/agent-server/model"
-	"github.com/ferdoran/go-sro/agent-server/service"
-	"github.com/ferdoran/go-sro/framework/server"
+	"github.com/Emptii/go-sro/agent-server/model"
+	"github.com/Emptii/go-sro/agent-server/service"
+	"github.com/Emptii/go-sro/framework/server"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 )

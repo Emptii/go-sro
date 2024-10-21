@@ -1,7 +1,7 @@
 package viewer
 
 import (
-	"github.com/ferdoran/go-sro/agent-server/navmeshv2"
+	"github.com/Emptii/go-sro/agent-server/navmeshv2"
 	"github.com/gen2brain/raylib-go/raygui"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )

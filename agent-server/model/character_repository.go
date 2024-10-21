@@ -2,7 +2,7 @@ package model
 
 import (
 	"database/sql"
-	"github.com/ferdoran/go-sro/framework/db"
+	"github.com/Emptii/go-sro/framework/db"
 	log "github.com/sirupsen/logrus"
 	"time"
 )

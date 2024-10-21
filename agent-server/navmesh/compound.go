@@ -1,8 +1,8 @@
 package navmesh
 
 import (
-	"github.com/ferdoran/go-sro/framework/pk2"
-	"github.com/ferdoran/go-sro/framework/utils"
+	"github.com/Emptii/go-sro/framework/pk2"
+	"github.com/Emptii/go-sro/framework/utils"
 	"github.com/sirupsen/logrus"
 	"os"
 	"strings"

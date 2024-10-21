@@ -2,8 +2,8 @@ package viewer
 
 import (
 	"fmt"
-	"github.com/ferdoran/go-sro/agent-server/navmeshv2"
-	"github.com/ferdoran/go-sro/framework/utils"
+	"github.com/Emptii/go-sro/agent-server/navmeshv2"
+	"github.com/Emptii/go-sro/framework/utils"
 	"github.com/gen2brain/raylib-go/raygui"
 	rl "github.com/gen2brain/raylib-go/raylib"
 	"github.com/sirupsen/logrus"

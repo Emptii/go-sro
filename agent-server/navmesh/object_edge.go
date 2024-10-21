@@ -1,7 +1,7 @@
 package navmesh
 
 import (
-	"github.com/ferdoran/go-sro/framework/math"
+	"github.com/Emptii/go-sro/framework/math"
 	"github.com/g3n/engine/math32"
 )
 

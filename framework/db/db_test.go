@@ -3,7 +3,7 @@ package db
 import (
 	"testing"
 
-	"github.com/ferdoran/go-sro/framework/config"
+	"github.com/Emptii/go-sro/framework/config"
 	"github.com/stretchr/testify/assert"
 )
 

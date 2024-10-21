@@ -2,10 +2,10 @@ package model
 
 import (
 	"fmt"
-	"github.com/ferdoran/go-sro/framework/network"
-	"github.com/ferdoran/go-sro/framework/network/opcode"
-	"github.com/ferdoran/go-sro/framework/server"
-	"github.com/ferdoran/go-sro/framework/utils"
+	"github.com/Emptii/go-sro/framework/network"
+	"github.com/Emptii/go-sro/framework/network/opcode"
+	"github.com/Emptii/go-sro/framework/server"
+	"github.com/Emptii/go-sro/framework/utils"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"sync"

@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/ferdoran/go-sro/framework/network"
+	"github.com/Emptii/go-sro/framework/network"
 	log "github.com/sirupsen/logrus"
 )
 

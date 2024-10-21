@@ -2,12 +2,12 @@ package service
 
 import (
 	"fmt"
-	"github.com/ferdoran/go-sro/agent-server/config"
-	"github.com/ferdoran/go-sro/agent-server/model"
-	"github.com/ferdoran/go-sro/agent-server/navmesh"
-	"github.com/ferdoran/go-sro/agent-server/navmeshv2"
-	"github.com/ferdoran/go-sro/framework/network"
-	"github.com/ferdoran/go-sro/framework/utils"
+	"github.com/Emptii/go-sro/agent-server/config"
+	"github.com/Emptii/go-sro/agent-server/model"
+	"github.com/Emptii/go-sro/agent-server/navmesh"
+	"github.com/Emptii/go-sro/agent-server/navmeshv2"
+	"github.com/Emptii/go-sro/framework/network"
+	"github.com/Emptii/go-sro/framework/utils"
 	"github.com/g3n/engine/math32"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"

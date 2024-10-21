@@ -1,14 +1,14 @@
 package lobby
 
 import (
-	"github.com/ferdoran/go-sro/agent-server/engine/environment"
-	"github.com/ferdoran/go-sro/agent-server/model"
-	"github.com/ferdoran/go-sro/agent-server/navmeshv2"
-	"github.com/ferdoran/go-sro/agent-server/service"
-	"github.com/ferdoran/go-sro/framework/network"
-	"github.com/ferdoran/go-sro/framework/network/opcode"
-	"github.com/ferdoran/go-sro/framework/server"
-	"github.com/ferdoran/go-sro/framework/utils"
+	"github.com/Emptii/go-sro/agent-server/engine/environment"
+	"github.com/Emptii/go-sro/agent-server/model"
+	"github.com/Emptii/go-sro/agent-server/navmeshv2"
+	"github.com/Emptii/go-sro/agent-server/service"
+	"github.com/Emptii/go-sro/framework/network"
+	"github.com/Emptii/go-sro/framework/network/opcode"
+	"github.com/Emptii/go-sro/framework/server"
+	"github.com/Emptii/go-sro/framework/utils"
 	"github.com/g3n/engine/math32"
 	log "github.com/sirupsen/logrus"
 	"math/rand"

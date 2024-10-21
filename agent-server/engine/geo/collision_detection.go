@@ -1,8 +1,8 @@
 package geo
 
 import (
-	"github.com/ferdoran/go-sro/agent-server/navmesh"
-	"github.com/ferdoran/go-sro/framework/math"
+	"github.com/Emptii/go-sro/agent-server/navmesh"
+	"github.com/Emptii/go-sro/framework/math"
 	"github.com/g3n/engine/math32"
 	"github.com/sirupsen/logrus"
 )

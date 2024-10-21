@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/ferdoran/go-sro/framework/network/opcode"
+	"github.com/Emptii/go-sro/framework/network/opcode"
 	log "github.com/sirupsen/logrus"
 )
 

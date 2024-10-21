@@ -3,8 +3,8 @@ package network
 import (
 	"encoding/binary"
 	"fmt"
-	"github.com/ferdoran/go-sro/framework/security/blowfish"
-	"github.com/ferdoran/go-sro/framework/utils"
+	"github.com/Emptii/go-sro/framework/security/blowfish"
+	"github.com/Emptii/go-sro/framework/utils"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 	"math"

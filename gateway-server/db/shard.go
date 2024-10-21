@@ -1,6 +1,6 @@
 package db
 
-import "github.com/ferdoran/go-sro/framework/db"
+import "github.com/Emptii/go-sro/framework/db"
 
 type Shard struct {
 	Id            int

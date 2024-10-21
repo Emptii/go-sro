@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/ferdoran/go-sro/agent-server/navmesh"
-	"github.com/ferdoran/go-sro/framework/pk2"
+	"github.com/Emptii/go-sro/agent-server/navmesh"
+	"github.com/Emptii/go-sro/framework/pk2"
 	"github.com/fogleman/gg"
 	ui "github.com/gizak/termui/v3"
 	"github.com/gizak/termui/v3/widgets"
@@ -15,7 +15,7 @@ import (
 	"strings"
 )
 
-const DataPk2File = "E:\\Silkroad_TestIn3\\Data.pk2"
+const DataPk2File = "/usr/silkroad/Data.pk2"
 
 type Pk2File struct {
 	pk2.PackFileEntry

@@ -2,10 +2,10 @@ package server
 
 import (
 	"encoding/binary"
-	"github.com/ferdoran/go-sro/framework/network"
-	"github.com/ferdoran/go-sro/framework/security"
-	"github.com/ferdoran/go-sro/framework/security/blowfish"
-	utils2 "github.com/ferdoran/go-sro/framework/utils"
+	"github.com/Emptii/go-sro/framework/network"
+	"github.com/Emptii/go-sro/framework/security"
+	"github.com/Emptii/go-sro/framework/security/blowfish"
+	utils2 "github.com/Emptii/go-sro/framework/utils"
 	log "github.com/sirupsen/logrus"
 )
 

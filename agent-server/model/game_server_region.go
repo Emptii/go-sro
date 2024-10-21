@@ -1,6 +1,6 @@
 package model
 
-import "github.com/ferdoran/go-sro/framework/db"
+import "github.com/Emptii/go-sro/framework/db"
 
 type GameServerRegion struct {
 	ContinentName string

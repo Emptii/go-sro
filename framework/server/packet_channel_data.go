@@ -1,6 +1,6 @@
 package server
 
-import "github.com/ferdoran/go-sro/framework/network"
+import "github.com/Emptii/go-sro/framework/network"
 
 type PacketChannelData struct {
 	*Session

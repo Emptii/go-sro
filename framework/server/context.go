@@ -2,7 +2,7 @@ package server
 
 import (
 	"encoding/binary"
-	"github.com/ferdoran/go-sro/framework/security"
+	"github.com/Emptii/go-sro/framework/security"
 	"math/rand"
 )
 

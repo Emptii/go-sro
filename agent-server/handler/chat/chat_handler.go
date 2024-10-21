@@ -1,8 +1,8 @@
 package chat
 
 import (
-	"github.com/ferdoran/go-sro/framework/network/opcode"
-	"github.com/ferdoran/go-sro/framework/server"
+	"github.com/Emptii/go-sro/framework/network/opcode"
+	"github.com/Emptii/go-sro/framework/server"
 	"github.com/sirupsen/logrus"
 )
 

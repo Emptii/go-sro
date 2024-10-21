@@ -2,7 +2,7 @@ package model
 
 import (
 	"fmt"
-	"github.com/ferdoran/go-sro/framework/utils"
+	"github.com/Emptii/go-sro/framework/utils"
 )
 
 type Position struct {

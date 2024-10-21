@@ -1,10 +1,10 @@
 package client
 
 import (
-	network2 "github.com/ferdoran/go-sro/framework/network"
-	security2 "github.com/ferdoran/go-sro/framework/security"
-	blowfish2 "github.com/ferdoran/go-sro/framework/security/blowfish"
-	utils2 "github.com/ferdoran/go-sro/framework/utils"
+	network2 "github.com/Emptii/go-sro/framework/network"
+	security2 "github.com/Emptii/go-sro/framework/security"
+	blowfish2 "github.com/Emptii/go-sro/framework/security/blowfish"
+	utils2 "github.com/Emptii/go-sro/framework/utils"
 	log "github.com/sirupsen/logrus"
 )
 

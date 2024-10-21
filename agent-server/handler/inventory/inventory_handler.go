@@ -1,11 +1,11 @@
 package inventory
 
 import (
-	"github.com/ferdoran/go-sro/agent-server/model"
-	"github.com/ferdoran/go-sro/agent-server/service"
-	"github.com/ferdoran/go-sro/framework/network"
-	"github.com/ferdoran/go-sro/framework/network/opcode"
-	"github.com/ferdoran/go-sro/framework/server"
+	"github.com/Emptii/go-sro/agent-server/model"
+	"github.com/Emptii/go-sro/agent-server/service"
+	"github.com/Emptii/go-sro/framework/network"
+	"github.com/Emptii/go-sro/framework/network/opcode"
+	"github.com/Emptii/go-sro/framework/server"
 	"github.com/sirupsen/logrus"
 )
 
@@ -76,11 +76,13 @@ func dropGold(data server.PacketChannelData) {
 	if err != nil {
 		logrus.Errorf("failed to read gold amount")
 	}
-
-	logrus.Infof("Player [%s] is dropping %d gold\n", data.UserContext.CharName, goldAmount)
+	logrus.Infof("Drop Gold Operation.\n")
+	logrus.Infof("Player [%s] is dropping %d gold!!!\n", data.UserContext.CharName, goldAmount)
 }
 
 func moveItem(data server.PacketChannelData) {
+	logrus.Infof("Player [%s] is moving an item.\n", data.UserContext.CharName)
+
 	sourceSlot, err := data.ReadByte()
 	if err != nil {
 		logrus.Errorf("failed to read source slot\n")

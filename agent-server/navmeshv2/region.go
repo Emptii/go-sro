@@ -1,6 +1,6 @@
 package navmeshv2
 
-import "github.com/ferdoran/go-sro/framework/utils"
+import "github.com/Emptii/go-sro/framework/utils"
 
 const (
 	RegionWidth  = 1920.0

@@ -6,8 +6,8 @@
 ![last-commit](https://img.shields.io/github/last-commit/ferdoran/go-sro-agent-server)
 
 An agent server implementation of the game Silkroad Online ,
-based on [/framework](https://github.com/ferdoran/framework) 
-and [go-sro-fileutils](https://github.com/ferdoran/go-sro-fileutils),
+based on [/framework](https://github.com/Emptii/framework) 
+and [go-sro-fileutils](https://github.com/Emptii/go-sro-fileutils),
 written in Golang. Also [raylib-go](https://github.com/gen2brain/raylib-go)
 is being used for the navmesh viewer in `cmd/navmesh-viewer/`
 
@@ -20,8 +20,8 @@ Using different versions might result in errors and bugs.
 Configuration can be done by config file or env variables.
 There is some default configuration which you can check here:
 
-- [`/framework/config/config.go`](https://github.com/ferdoran/framework/tree/master/config/config.go)
-- [`config/agent.go`](https://github.com/ferdoran/go-sro-agent-server/tree/master/config/agent.go)
+- [`/framework/config/config.go`](https://github.com/Emptii/framework/tree/master/config/config.go)
+- [`config/agent.go`](https://github.com/Emptii/go-sro-agent-server/tree/master/config/agent.go)
 
 ## Features
 
@@ -71,9 +71,9 @@ Without his packet and file structure documentation this would not have been pos
 
 As this is just a framework, there are also projects taking this framework into use:
 
-- [go-sro-fileutils](https://github.com/ferdoran/go-sro-fileutils)
-- [/framework](https://github.com/ferdoran/framework)
-- [go-sro-gateway-server](https://github.com/ferdoran/go-sro-gateway-server)
+- [go-sro-fileutils](https://github.com/Emptii/go-sro-fileutils)
+- [/framework](https://github.com/Emptii/framework)
+- [go-sro-gateway-server](https://github.com/Emptii/go-sro-gateway-server)
 
 ## Contribution
 

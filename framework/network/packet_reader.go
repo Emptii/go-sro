@@ -4,7 +4,7 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
-	"github.com/ferdoran/go-sro/framework/security/blowfish"
+	"github.com/Emptii/go-sro/framework/security/blowfish"
 	"io"
 )
 

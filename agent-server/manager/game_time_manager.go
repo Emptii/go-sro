@@ -1,8 +1,8 @@
 package manager
 
 import (
-	"github.com/ferdoran/go-sro/agent-server/config"
-	"github.com/ferdoran/go-sro/agent-server/service"
+	"github.com/Emptii/go-sro/agent-server/config"
+	"github.com/Emptii/go-sro/agent-server/service"
 	"github.com/spf13/viper"
 	"sync"
 	"time"

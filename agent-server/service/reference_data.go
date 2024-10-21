@@ -3,8 +3,8 @@ package service
 import (
 	"errors"
 	"fmt"
-	"github.com/ferdoran/go-sro/agent-server/model"
-	"github.com/ferdoran/go-sro/framework/db"
+	"github.com/Emptii/go-sro/agent-server/model"
+	"github.com/Emptii/go-sro/framework/db"
 	"github.com/sirupsen/logrus"
 	"sync"
 )

@@ -2,8 +2,8 @@ package client
 
 import (
 	"fmt"
-	"github.com/ferdoran/go-sro/framework/network"
-	"github.com/ferdoran/go-sro/framework/security/blowfish"
+	"github.com/Emptii/go-sro/framework/network"
+	"github.com/Emptii/go-sro/framework/security/blowfish"
 	log "github.com/sirupsen/logrus"
 	"math/rand"
 	"net"

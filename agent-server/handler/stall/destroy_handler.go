@@ -1,9 +1,9 @@
 package stall
 
 import (
-	"github.com/ferdoran/go-sro/framework/network"
-	"github.com/ferdoran/go-sro/framework/network/opcode"
-	"github.com/ferdoran/go-sro/framework/server"
+	"github.com/Emptii/go-sro/framework/network"
+	"github.com/Emptii/go-sro/framework/network/opcode"
+	"github.com/Emptii/go-sro/framework/server"
 )
 
 type StallDestroyHandler struct {

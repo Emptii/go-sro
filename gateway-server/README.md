@@ -1,7 +1,7 @@
 # go-sro-gateway-server
 
 An agent server implementation of the game Silkroad Online,
-based on [/framework](https://github.com/ferdoran/framework),
+based on [/framework](https://github.com/Emptii/framework),
 written in Golang.
 
 It was developed using vSRO 1.88 files.
@@ -24,9 +24,9 @@ Without his packet and file structure documentation this would not have been pos
 
 As this is just a framework, there are also projects taking this framework into use:
 
-- [go-sro-fileutils](https://github.com/ferdoran/go-sro-fileutils)
-- [/framework](https://github.com/ferdoran/framework)
-- [go-sro-agent-server](https://github.com/ferdoran/go-sro-agent-server)
+- [go-sro-fileutils](https://github.com/Emptii/go-sro-fileutils)
+- [/framework](https://github.com/Emptii/framework)
+- [go-sro-agent-server](https://github.com/Emptii/go-sro-agent-server)
 
 ## Contribution
 

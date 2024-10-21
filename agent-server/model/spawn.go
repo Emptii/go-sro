@@ -1,8 +1,8 @@
 package model
 
 import (
-	"github.com/ferdoran/go-sro/agent-server/navmeshv2"
-	"github.com/ferdoran/go-sro/framework/db"
+	"github.com/Emptii/go-sro/agent-server/navmeshv2"
+	"github.com/Emptii/go-sro/framework/db"
 )
 
 type Spawn struct {

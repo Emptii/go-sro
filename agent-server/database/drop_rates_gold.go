@@ -1,6 +1,6 @@
 package database
 
-import "github.com/ferdoran/go-sro/framework/db"
+import "github.com/Emptii/go-sro/framework/db"
 
 type DropRatesGold struct {
 	MobLvl int

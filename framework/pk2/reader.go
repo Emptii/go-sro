@@ -2,8 +2,8 @@ package pk2
 
 import (
 	"fmt"
-	"github.com/ferdoran/go-sro/framework/security/blowfish"
-	"github.com/ferdoran/go-sro/framework/utils"
+	"github.com/Emptii/go-sro/framework/security/blowfish"
+	"github.com/Emptii/go-sro/framework/utils"
 	"github.com/pkg/errors"
 	"log"
 	"os"

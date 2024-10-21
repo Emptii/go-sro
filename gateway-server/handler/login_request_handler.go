@@ -1,12 +1,12 @@
 package handler
 
 import (
-	"github.com/ferdoran/go-sro/framework/network"
-	"github.com/ferdoran/go-sro/framework/network/opcode"
-	"github.com/ferdoran/go-sro/framework/server"
-	"github.com/ferdoran/go-sro/gateway-server/clients"
-	"github.com/ferdoran/go-sro/gateway-server/config"
-	"github.com/ferdoran/go-sro/gateway-server/db"
+	"github.com/Emptii/go-sro/framework/network"
+	"github.com/Emptii/go-sro/framework/network/opcode"
+	"github.com/Emptii/go-sro/framework/server"
+	"github.com/Emptii/go-sro/gateway-server/clients"
+	"github.com/Emptii/go-sro/gateway-server/config"
+	"github.com/Emptii/go-sro/gateway-server/db"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"math/rand"

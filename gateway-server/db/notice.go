@@ -1,7 +1,7 @@
 package db
 
 import (
-	"github.com/ferdoran/go-sro/framework/db"
+	"github.com/Emptii/go-sro/framework/db"
 	"time"
 )
 

@@ -1,10 +1,10 @@
 package clients
 
 import (
-	"github.com/ferdoran/go-sro/framework/client"
-	"github.com/ferdoran/go-sro/framework/network"
-	"github.com/ferdoran/go-sro/framework/network/opcode"
-	"github.com/ferdoran/go-sro/gateway-server/config"
+	"github.com/Emptii/go-sro/framework/client"
+	"github.com/Emptii/go-sro/framework/network"
+	"github.com/Emptii/go-sro/framework/network/opcode"
+	"github.com/Emptii/go-sro/gateway-server/config"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 )
