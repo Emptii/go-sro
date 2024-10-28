@@ -59,6 +59,8 @@ type RefChar struct {
 	Except8         int
 	Except9         int
 	Except10        int
+
+	CurrentHealth int
 }
 
 var RefChars map[uint32]RefChar

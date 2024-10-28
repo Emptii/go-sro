@@ -120,7 +120,7 @@ func WriteEntitySpawnData(p *network.Packet, object ISRObject) {
 			p.WriteByte(0) // TODO TalkFlag
 
 			if typeInfo.IsNPCMob() {
-				p.WriteByte(1) // TODO Rarity
+				p.WriteByte(0) // TODO Rarity
 			}
 			//	//NPC
 			//	1   byte    TalkFlag

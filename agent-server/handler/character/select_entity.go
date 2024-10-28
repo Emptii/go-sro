@@ -46,8 +46,14 @@ func (h *SelectEntityHandler) Handle() {
 			p.WriteByte(0)
 			return
 		} else if object.GetTypeInfo().IsNPCMob() {
+
+			refChar, err := service.GetReferenceDataServiceInstance().GetReferenceCharacter(object.GetRefObjectID())
+			if err != nil {
+				logrus.Debugf("Selected entity %s is not an npc", object.GetName())
+			}
+
 			p.WriteByte(1)
-			p.WriteUInt32(0) // TODO: Monster HP
+			p.WriteUInt32(uint32(refChar.CurrentHealth)) // TODO: Monster HP
 			p.WriteByte(1)
 			p.WriteByte(5)
 

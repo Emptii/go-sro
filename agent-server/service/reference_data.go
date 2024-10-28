@@ -374,6 +374,8 @@ func loadReferenceCharacters() map[uint32]model.RefChar {
 			&refChar.Except9,
 			&refChar.Except10,
 		)
+
+		refChar.CurrentHealth = refChar.MaxHP
 		counter++
 		refChars[refChar.ID] = refChar
 	}
