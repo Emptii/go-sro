@@ -118,7 +118,7 @@ func WriteEntitySpawnData(p *network.Packet, object ISRObject) {
 			p.WriteByte(0xFF) // PK Flag
 		} else if typeInfo.IsNPC() {
 			p.WriteByte(0) // TODO TalkFlag
-
+			// TODO perma https://github.com/tanisman/SilkroadProject/blob/8f72246035555abdaba4cf079a356ea028db7385/SR_GameServer/GameWorld/GObjUtils.cs#L120
 			if typeInfo.IsNPCMob() {
 				p.WriteByte(0) // TODO Rarity
 			}

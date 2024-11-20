@@ -57,6 +57,8 @@ func (h *SelectEntityHandler) Handle() {
 			// for (std::vector<uint8_t>::const_iterator i = tasks.begin(); i != tasks.end(); ++i)
 			//	pkt->Write<uint8_t>(*i);
 			// see https://github.com/ghostuser846/eSRO/blob/c69c9465c1a61cb880b475315f3cc5b96e78158a/EPL/src/packet_npc.cpp#L161
+			// By the way, tasks seem to get loaded on world start and eSRO does it like this:
+			// https://github.com/ghostuser846/eSRO/blob/c69c9465c1a61cb880b475315f3cc5b96e78158a/SQL/property_query.cpp#L43
 			p.WriteByte(0)
 			p.WriteByte(0)
 		} else if object.GetTypeInfo().IsNPCMob() {
