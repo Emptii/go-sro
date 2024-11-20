@@ -20,6 +20,28 @@ services:
       MYSQL_USER: sro
       MYSQL_PASSWORD: 1234
 
+  # commented out for now so we can still use docker compose up 
+  # new-db:
+  #   #image: ghcr.io/emptii/go-sro/db:main
+  #   build: 
+  #     context: .
+  #     dockerfile: ./new-db/Dockerfile
+  #   restart: no 
+  #   container_name: gosro-new-db
+  #   networks:
+  #     - gosro
+  #   ports:
+  #     - "3306:3306"
+  #     - "33060:33060"
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         memory: 1G
+  #   environment:
+  #     MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+  #     MYSQL_USER: sro
+  #     MYSQL_PASSWORD: 1234
+  #
   agent-server:
     image: ghcr.io/emptii/go-sro/agent-server:main
     build: 
