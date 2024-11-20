@@ -3,7 +3,7 @@ RUN mkdir /app
 ADD . /app
 WORKDIR /app
 RUN go clean --modcache
-RUN go mod tidy 
+#RUN go mod tidy 
 RUN GOOS=linux CGO_ENABLED=0 go build -o agent-server agent-server/server.go
 
 FROM alpine:latest
