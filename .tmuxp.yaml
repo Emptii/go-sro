@@ -1,0 +1,17 @@
+session_name: go-sro 
+start_directory: ~/workspace/go-sro/
+windows:
+  - window_name: dev
+    panes:
+      - shell_command: 
+        - nvim .
+  - window_name: run 
+    panes:
+      - shell_command: 
+        - docker compose up -d db gateway-server
+        - sleep 5
+        - docker compose up agent-server 
+  - window_name: client
+    panes:
+      - shell_command: 
+        - echo "this is where you can run start-game-client.sh"

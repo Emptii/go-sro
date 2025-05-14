@@ -1,3 +1,8 @@
+# Quickstart
+You can use tmuxp to start a tmux session that launches the emulator and opens a neovim session. You can run the game client by running the `start-game-client.sh` file. Don't forget to set you WINEPREFIX.
+```bash
+tmuxp load .
+```
 # go-sro
 A custom server/backend implementation of the game Silkroad Online
 written in Go.

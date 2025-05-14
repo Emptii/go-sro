@@ -21,3 +21,7 @@ config.json
 
 # the unpacked Media.pk2 file I need to extract the textdata for the new database
 new-db/Media
+
+agent-server/unhandled_packets.txt
+agent-server/server
+
