@@ -1,17 +1,20 @@
-# Quickstart
-You can use tmuxp to start a tmux session that launches the emulator and opens a neovim session. You can run the game client by running the `start-game-client.sh` file. Don't forget to set you WINEPREFIX.
-```bash
-tmuxp load .
-```
 # go-sro
+
 A custom server/backend implementation of the game Silkroad Online
 written in Go.
 
-![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/ferdoran/go-sro)
-![Lines of code](https://img.shields.io/tokei/lines/github/ferdoran/go-sro)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ferdoran/go-sro/Build%20and%20Publish%20Gateway%20Server%20Image?label=Gateway%20Server)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ferdoran/go-sro/Build%20and%20Publish%20Gateway%20Server%20Image?label=Agent%20Server)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ferdoran/go-sro/Build%20and%20Publish%20Agent%20Server%20Image?label=DB)
+## Quickstart
+
+You can use tmuxp to start a tmux session that launches the emulator and opens a neovim session. You can run the game client by running the `start-game-client.sh` file. Don't forget to set you WINEPREFIX.
+
+```bash
+tmuxp load .
+```
+
+### Game Client Binaries
+
+This server needs the Silkroad Online binaries to run. You probably want them anyway. They have to be stored in the `./game_client_binaries/` directory.
+Getting these binaries is a big pain, especially since you need the specific version this emulator is built for.
 
 ## Architecture
 
@@ -26,10 +29,10 @@ All of them handle different kind of aspects to the game:
 - **Download/Patch Server**: Provide updates and patches to the clients.
 - **Gateway Server**: Perform authentication and transfer to the specific realm or shard.
 - **Agent Server**: Proxy server for the client through which all network traffic is sent.
-Takes care routing network traffic to the correct servers.
+  Takes care routing network traffic to the correct servers.
 - **Game Server**: Handles core game logic (navigation, AI, combat, ...)
-and game objects (players, pets, NPCs, ...).
-Usually there are multiple game servers, each handling a different region of the overall map
+  and game objects (players, pets, NPCs, ...).
+  Usually there are multiple game servers, each handling a different region of the overall map
 - **Shard Server**: Handles all region-independent logic (guild, party, market, events, ...)
 - **Chat Server**: Handles overall chat messages (except local/region chat).
-Could also be handled by **Shard Server**
+  Could also be handled by **Shard Server**

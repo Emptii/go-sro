@@ -42,13 +42,13 @@ func bindEnvAliases() {
 }
 
 func setDefaultValues() {
-	viper.SetDefault(AgentHost, "127.0.0.1")
-	viper.SetDefault(AgentPublicIp, "127.0.0.1")
+	viper.SetDefault(AgentHost, "0.0.0.0")
+	viper.SetDefault(AgentPublicIp, "0.0.0.0")
 	viper.SetDefault(AgentPort, 15882)
 	viper.SetDefault(AgentSecret, "agent-server")
 	viper.SetDefault(AgentModuleId, "AgentServer")
 
-	viper.SetDefault(GatewayHost, "127.0.0.1")
+	viper.SetDefault(GatewayHost, "0.0.0.0")
 	viper.SetDefault(GatewayPort, 15779)
 	viper.SetDefault(GatewaySecret, "gateway-server")
 	viper.SetDefault(GatewayModuleId, "GatewayServer")

@@ -1,6 +1,10 @@
 module github.com/Emptii/go-sro
 
-go 1.18
+go 1.21
+
+toolchain go1.23.5
+
+//toolchain go1.23.4
 
 require (
 	github.com/fogleman/gg v1.3.0

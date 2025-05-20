@@ -2,13 +2,14 @@ package client
 
 import (
 	"fmt"
-	"github.com/Emptii/go-sro/framework/network"
-	"github.com/Emptii/go-sro/framework/security/blowfish"
-	log "github.com/sirupsen/logrus"
 	"math/rand"
 	"net"
 	"sync"
 	"time"
+
+	"github.com/Emptii/go-sro/framework/network"
+	"github.com/Emptii/go-sro/framework/security/blowfish"
+	log "github.com/sirupsen/logrus"
 )
 
 type Client struct {
@@ -98,7 +99,7 @@ func (c *Client) Reconnect() {
 		c.reconnectCount++
 		c.Ctx = SecurityContext{}
 		c.Cipher = nil
-		log.Infof("Reconnecting... Attempt [%v/%v]\n", c.reconnectCount, c.MaxReconnectAttempts)
+		log.Infof("Reconnecting to %v:%v... Attempt [%v/%v]\n", c.host, c.port, c.reconnectCount, c.MaxReconnectAttempts)
 		c.mutex.Unlock()
 		time.Sleep(time.Second * c.ReconnectTimeoutInSeconds)
 		c.Connect()

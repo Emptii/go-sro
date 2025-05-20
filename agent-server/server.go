@@ -2,6 +2,8 @@ package main
 
 import (
 	"bufio"
+	"os"
+
 	"github.com/Emptii/go-sro/agent-server/config"
 	"github.com/Emptii/go-sro/agent-server/handler/character"
 	"github.com/Emptii/go-sro/agent-server/handler/chat"
@@ -21,7 +23,6 @@ import (
 	gwHandlers "github.com/Emptii/go-sro/gateway-server/handler"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
-	"os"
 )
 
 type AgentServer struct {

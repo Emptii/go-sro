@@ -24,4 +24,7 @@ new-db/Media
 
 agent-server/unhandled_packets.txt
 agent-server/server
+agent-server-binaries
+gateway-server-binaries
 
+game_client_binaries/Silkroad

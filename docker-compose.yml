@@ -1,13 +1,13 @@
 services:
   db:
     image: ghcr.io/emptii/go-sro/db:main
-    build: 
+    build:
       context: .
       dockerfile: ./db/Dockerfile
-    restart: no 
+    restart: no
     container_name: gosro-db
-    networks:
-      - gosro
+    #networks:
+    #  - gosro
     ports:
       - "3306:3306"
       - "33060:33060"
@@ -20,13 +20,13 @@ services:
       MYSQL_USER: sro
       MYSQL_PASSWORD: 1234
 
-  # commented out for now so we can still use docker compose up 
+  # commented out for now so we can still use docker compose up
   # new-db:
   #   #image: ghcr.io/emptii/go-sro/db:main
-  #   build: 
+  #   build:
   #     context: .
   #     dockerfile: ./new-db/Dockerfile
-  #   restart: no 
+  #   restart: no
   #   container_name: gosro-new-db
   #   networks:
   #     - gosro
@@ -41,52 +41,56 @@ services:
   #     MYSQL_RANDOM_ROOT_PASSWORD: "yes"
   #     MYSQL_USER: sro
   #     MYSQL_PASSWORD: 1234
-  #
-  agent-server:
-    image: ghcr.io/emptii/go-sro/agent-server:main
-    build: 
-      context: .
-      dockerfile: ./agent-server/Dockerfile
-    restart: no
-    container_name: gosro-agent-server
-    networks:
-      - gosro
-    depends_on:
-      - db
-    ports:
-      - "15882:15882"
-    deploy:
-      resources:
-        limits:
-          memory: 4G
-    environment:
-      DB_ACCOUNT_HOST: db
-      DB_SHARD_HOST: db
-      AGENT_HOST: agent-server
-      LOG_LEVEL: debug
-    volumes:
-      - "/opt/Silkroad_v1.188/drive_c/Program Files (x86)/Silkroad/Data.pk2:/etc/go-sro/Data"
 
+  # agent-server:
+  #   image: ghcr.io/emptii/go-sro/agent-server:main
+  #   build:
+  #     context: .
+  #     dockerfile: ./agent-server/Dockerfile
+  #   restart: no
+  #   container_name: gosro-agent-server
+  #   networks:
+  #     - gosro
+  #   depends_on:
+  #     - db
+  #   ports:
+  #     - "15882:15882"
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         memory: 4G
+  #   environment:
+  #     DB_ACCOUNT_HOST: db
+  #     DB_SHARD_HOST: db
+  #     AGENT_HOST: agent-server
+  #     LOG_LEVEL: debug
+  #   volumes:
+  #     - "/opt/Silkroad_v1.188/drive_c/Program Files (x86)/Silkroad/Data.pk2:/etc/go-sro/Data"
+  #
   gateway-server:
     image: ghcr.io/emptii/go-sro/gateway-server:main
-    build: 
+    build:
       context: .
       dockerfile: ./gateway-server/Dockerfile
-    restart: no 
+    restart: no
     container_name: gosro-gateway-server
     depends_on:
       - db
-      - agent-server
+        #- agent-server
     ports:
+      #- "1000-65535:1000-65535"
       - "15779:15779"
-    networks:
-      - gosro
+    #network_mode:
+    #  "host"
+    #networks:
+    #- gosro
     environment:
       DB_ACCOUNT_HOST: db
       DB_SHARD_HOST: db
-      AGENT_HOST: agent-server
-      AGENT_PUBLIC_IP: "127.0.0.1"
+      AGENT_HOST: "192.168.178.84"
+      AGENT_PUBLIC_IP: "192.168.178.84"
       GATEWAY_HOST: gateway-server
+      GATEWAY_SECRET: "192.168.178.84"
 
 networks:
   gosro:
