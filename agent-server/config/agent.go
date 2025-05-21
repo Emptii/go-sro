@@ -46,18 +46,19 @@ func bindEnvAliases() {
 }
 
 func setDefaultValues() {
-	viper.SetDefault(AgentHost, "127.0.0.1")
-	//viper.SetDefault(AgentHost, "192.168.178.84")
+	viper.SetDefault(AgentHost, "0.0.0.0")
+	// viper.SetDefault(AgentHost, "127.0.0.1")
+	// viper.SetDefault(AgentHost, "192.168.178.84")
 	viper.SetDefault(AgentPort, 15882)
 	viper.SetDefault(AgentSecret, "agent-server")
 	viper.SetDefault(AgentModuleId, "AgentServer")
 
-	//viper.SetDefault(AgentDataPath, "./Data")
-	viper.SetDefault(AgentDataPath, "/opt/Silkroad_v1.188/drive_c/Program Files (x86)/Silkroad/Data.pk2")
+	// viper.SetDefault(AgentDataPath, "./Data")
+	viper.SetDefault(AgentDataPath, "./Data")
 	viper.SetDefault(AgentPrelinkedNavdataFile, "./prelinked_navdata.gob")
 
-	//viper.SetDefault(GatewaySecret, "gateway-server")
-	viper.SetDefault(GatewaySecret, "192.168.178.84")
+	// viper.SetDefault(GatewaySecret, "gateway-server")
+	viper.SetDefault(GatewaySecret, "127.0.0.1")
 	viper.SetDefault(GatewayModuleId, "GatewayServer")
 
 	viper.SetDefault(GameTimeTicksPerSecond, 10)

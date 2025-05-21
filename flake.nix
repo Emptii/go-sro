@@ -1,10 +1,8 @@
 {
-  description = "Dev shell with Go 1.18";
+  description = "Go development environment (latest from nixpkgs)";
 
   inputs = {
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-22.05";
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # or stable if you prefer
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -12,19 +10,16 @@
     self,
     nixpkgs,
     flake-utils,
-    ...
   }:
     flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import nixpkgs {
-        inherit system;
-      };
+      pkgs = import nixpkgs {inherit system;};
     in {
       devShells.default = pkgs.mkShell {
         buildInputs = [
-          pkgs.go_1_18
+          pkgs.go
         ];
         shellHook = ''
-          echo "Using Go version: $(go version)"
+          echo "Go development environment ready with Go ${pkgs.go.version}"
         '';
       };
     });

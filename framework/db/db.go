@@ -2,6 +2,8 @@ package db
 
 import (
 	"database/sql"
+
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 
 	"github.com/Emptii/go-sro/framework/config"
@@ -18,6 +20,8 @@ func OpenConnAccount() (db *sql.DB) {
 }
 
 func OpenConnShard() (db *sql.DB) {
+	logrus.Infof(config.ConnStringShard())
+
 	db, errDb := sql.Open(viper.GetString(config.DatabaseShardDriver), config.ConnStringShard())
 	if errDb != nil {
 		panic(errDb.Error())

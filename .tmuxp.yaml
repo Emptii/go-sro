@@ -5,12 +5,23 @@ windows:
     panes:
       - shell_command: 
         - nvim .
-  - window_name: run 
+  - window_name: run db
     panes:
       - shell_command: 
-        - docker compose up -d db gateway-server
+        - docker compose up db
+  - window_name: run gateway
+    shell_command_before:
+      - nix develop
+    panes:
+      - shell_command: 
+        - go run gateway-server/server.go
+  - window_name: run agent-server
+    shell_command_before:
+      - nix develop
+    panes:
+      - shell_command: 
         - sleep 5
-        - docker compose up agent-server 
+        - go run agent-server/server.go
   - window_name: client
     panes:
       - shell_command: 
