@@ -17,8 +17,12 @@
       devShells.default = pkgs.mkShell {
         buildInputs = [
           pkgs.go
+          pkgs.delve
         ];
         shellHook = ''
+          export CGO_CFLAGS_ALLOW='-O0'
+          export CGO_CFLAGS='-O1' # or unset _FORTIFY_SOURCE altogether:
+          export CGO_CPPFLAGS="-U_FORTIFY_SOURCE"
           echo "Go development environment ready with Go ${pkgs.go.version}"
         '';
       };
