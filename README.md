@@ -11,6 +11,20 @@ You can use tmuxp to start a tmux session that launches the emulator and opens a
 tmuxp load .
 ```
 
+## GM Commands
+There are GM commands implemented by the go-sro author in agent-server/handler/chat/gm.go, and there are GM commands that he/someone documented under framework/docs/gm_commands.
+
+Implemented are:
+
+```
+Setting player character's speed (".speed *value*")
+Getting player characetr's current position (".curpos")
+Setting the loglevel while servers are running (".loglevel debug/trace/info")
+Teleporting the player character to predefined locations (".jgwest", ".takla1", "takla2")
+```
+
+These will work if the player writes commands into his chat-box. (the account might have to be GM)
+
 ### Game Client Binaries
 
 This server needs the Silkroad Online binaries to run. You probably want them anyway. They have to be stored in the `./game_client_binaries/` directory.
