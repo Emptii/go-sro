@@ -21,13 +21,17 @@ func (h *SkillHandler) Handle() {
 	for {
 		data := <-h.channel
 		// TODO implement real logic
-		masteryId, err := data.ReadUInt8()
-		logrus.Info("masteryId %s", masteryId)
-
+		skillId, err := data.ReadUInt32()
 		if err != nil {
 			logrus.Panicf("failed to read unique id")
 		}
+		logrus.Info("skillId %s", skillId)
+
 		p := network.EmptyPacket()
 		p.MessageID = opcode.EntitySkillIncreaseResponse
+		p.WriteByte(0x01)
+		p.WriteUInt32(skillId)
+
+		data.Conn.Write(p.ToBytes())
 	}
 }

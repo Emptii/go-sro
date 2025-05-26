@@ -71,6 +71,8 @@ func NewAgentServer() AgentServer {
 	boot.RegisterComponent("packethandler", character.InitGuideHandler, 2)
 	boot.RegisterComponent("packethandler", character.InitMovementHandler, 2)
 	boot.RegisterComponent("packethandler", character.InitSelectEntityHandler, 2)
+	boot.RegisterComponent("packethandler", character.InitMasteryHandler, 2)
+	boot.RegisterComponent("packethandler", character.InitSkillHandler, 2)
 	boot.RegisterComponent("packethandler", chat.InitChatHandler, 2)
 	boot.RegisterComponent("packethandler", logout.InitLogoutHandler, 2)
 	boot.RegisterComponent("packethandler", stall.InitStallCreateHandler, 2)

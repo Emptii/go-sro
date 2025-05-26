@@ -123,6 +123,7 @@ type Player struct {
 	WalkSpeed           float32
 	RunSpeed            float32
 	HwanSpeed           float32
+	Masteries           map[uint32]uint8
 
 	/* TODO
 	- Teleport Position

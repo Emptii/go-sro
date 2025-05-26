@@ -253,6 +253,24 @@ func (h *CharSelectionJoinRequestHandler) LoadPlayerData(charName string, sessio
 	player.RefObjectID = uint32(char.RefObjID)
 	player.UniqueID = 0
 
+	player.Masteries = make(map[uint32]uint8)
+	if player.IsEuropean() {
+		player.Masteries[513] = 0
+		player.Masteries[514] = 0
+		player.Masteries[515] = 0
+		player.Masteries[516] = 0
+		player.Masteries[517] = 0
+		player.Masteries[518] = 0
+	} else {
+		player.Masteries[257] = 0
+		player.Masteries[258] = 0
+		player.Masteries[259] = 0
+		player.Masteries[273] = 0
+		player.Masteries[274] = 0
+		player.Masteries[275] = 0
+		player.Masteries[276] = 0
+	}
+
 	region, err := world.GetRegion(char.Region)
 
 	if err != nil {
