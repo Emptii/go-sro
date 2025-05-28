@@ -237,14 +237,43 @@ func (h *CharSelectionJoinRequestHandler) LoadPlayerData(charName string, sessio
 		//MagAbsorbPercent:  0,
 		//PhyBalancePercent: 0,
 		//MagBalancePercent: 0,
-		SkillPoints:    int(char.SkillPoints),
-		StatPoints:     char.StatPoints,
-		ExpOffset:      uint64(char.Exp),
-		SkillExpOffset: uint(char.SkillExp),
-		Level:          char.Level,
-		MaxLevel:       char.MaxLevel,
-		Mutex:          sync.Mutex{},
-		IsGm:           char.IsGm,
+		SkillPoints:        int(char.SkillPoints),
+		StatPoints:         char.StatPoints,
+		ExpOffset:          uint64(char.Exp),
+		SkillExpOffset:     uint(char.SkillExp),
+		Level:              char.Level,
+		MaxLevel:           char.MaxLevel,
+		Mutex:              sync.Mutex{},
+		IsGm:               char.IsGm,
+		Gold:               char.Gold,
+		GoldStored:         char.GoldStored,
+		Volume:             char.Volume,
+		AutopotHPActive:    char.AutopotHPActive,
+		AutopotHPValue:     char.AutopotHPValue,
+		AutopotHPBar:       char.AutopotHPBar,
+		AutopotHPSlot:      char.AutopotHPSlot,
+		AutopotMPActive:    char.AutopotMPActive,
+		AutopotMPValue:     char.AutopotMPValue,
+		AutopotMPBar:       char.AutopotMPBar,
+		AutopotMPSlot:      char.AutopotMPSlot,
+		AutopotPillActive:  char.AutopotPillActive,
+		AutopotPillBar:     char.AutopotPillBar,
+		AutopotPillSlot:    char.AutopotPillSlot,
+		AutopotDelayActive: char.AutopotDelayActive,
+		AutopotDelay:       char.AutopotDelay,
+		PK:                 char.PK,
+		PKLevel:            char.PKLevel,
+		InventorySlots:     char.InventorySlots,
+		InventorySlotsInc:  char.InventorySlotsInc,
+		StorageSlots:       char.StorageSlots,
+		StorageSlotsInc:    char.StorageSlotsInc,
+		GuildID:            char.GuildID,
+		AcademyID:          char.AcademyID,
+		ReturnID:           char.ReturnID,
+		StallAvatarID:      char.StallAvatarID,
+		AbilityPetID:       char.AbilityPetID,
+		AttackPetID:        char.AttackPetID,
+		TransportID:        char.TransportID,
 	}
 	player.Type = model.PlayerType
 	player.WalkSpeed = 16
@@ -298,10 +327,10 @@ func WriteCharDataToPacket(p *network.Packet, data *model.Player) {
 	p.WriteByte(byte(data.MaxLevel))
 	p.WriteUInt64(data.ExpOffset)
 	p.WriteUInt32(uint32(data.SkillExpOffset))
-	p.WriteUInt64(1_000_000_000)           // Gold
-	p.WriteUInt32(100_000)                 // Skill Points
-	p.WriteUInt16(uint16(data.StatPoints)) // Stat Points
-	p.WriteByte(0)                         // Berserker Points
+	p.WriteUInt64(uint64(data.Gold))        // Gold
+	p.WriteUInt32(uint32(data.SkillPoints)) // Skill Points
+	p.WriteUInt16(uint16(data.StatPoints))  // Stat Points
+	p.WriteByte(0)                          // Berserker Points
 	p.WriteUInt32(0)
 	p.WriteUInt32(uint32(data.BaseStats.HP))
 	p.WriteUInt32(uint32(data.BaseStats.MP))

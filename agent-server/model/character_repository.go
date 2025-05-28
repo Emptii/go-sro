@@ -2,40 +2,75 @@ package model
 
 import (
 	"database/sql"
-	"github.com/Emptii/go-sro/framework/db"
-	log "github.com/sirupsen/logrus"
 	"time"
+
+	"github.com/Emptii/go-sro/framework/db"
+	"github.com/sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 )
 
 type Char struct {
-	ID          int
-	RefObjID    int
-	User        int
-	Shard       int
-	Name        string
-	Scale       byte
-	Level       int
-	MaxLevel    int
-	Exp         int64
-	SkillExp    int64
-	SkillPoints int64
-	Str         int
-	Int         int
-	StatPoints  int
-	HP          int
-	MP          int
-	IsDeleting  bool
-	PosX        float32
-	PosY        float32
-	PosZ        float32
-	Ctime       time.Time
-	Utime       time.Time
-	Region      int16
-	IsGm        bool
+	ID                 int
+	RefObjID           int
+	User               int
+	Shard              int
+	Name               string
+	Scale              byte
+	Level              int
+	MaxLevel           int
+	Exp                int64
+	SkillExp           int64
+	SkillPoints        int64
+	Str                int
+	Int                int
+	StatPoints         int
+	HP                 int
+	MP                 int
+	IsDeleting         bool
+	PosX               float32
+	PosY               float32
+	PosZ               float32
+	Ctime              time.Time
+	Utime              time.Time
+	Region             int16
+	IsGm               bool
+	Gold               int
+	GoldStored         int
+	BerserkCount       bool
+	PK                 int
+	PKLevel            int
+	Volume             bool
+	InventorySlots     int
+	InventorySlotsInc  bool
+	StorageSlots       int
+	StorageSlotsInc    bool
+	GuildID            int
+	AcademyID          int
+	ReturnID           int
+	StallAvatarID      int
+	AbilityPetID       int
+	AttackPetID        int
+	TransportID        int
+	AutopotHPActive    bool
+	AutopotHPValue     int
+	AutopotHPBar       bool
+	AutopotHPSlot      bool
+	AutopotMPActive    bool
+	AutopotMPValue     int
+	AutopotMPBar       bool
+	AutopotMPSlot      bool
+	AutopotPillActive  bool
+	AutopotPillBar     bool
+	AutopotPillSlot    bool
+	AutopotDelayActive bool
+	AutopotDelay       int
+	ExpirationMark     bool
+	ExpirationDate     time.Time
+	CreationDate       time.Time
 }
 
 const (
-	SelectCharByName           string = "SELECT * FROM `SRO_SHARD`.`CHAR` WHERE CHAR_NAME=?;"
+	SelectCharByName           string = "SELECT id, REF_OBJ_ID, FK_USER, FK_SHARD, CHAR_NAME, CHAR_SCALE, CURRENT_LEVEL, EXP, SKILL_EXP, STRENGTH, INTELLECT, STAT_POINTS, HP, MP, DELETING, POS_X, POS_Y, POS_Z, CTIME, UTIME, FK_REGION, SKILL_POINTS, MAX_LEVEL, GOLD, GOLD_STORED, BERSERK_COUNT, PK, PK_LVL, VOLUME, INVENTORY_SLOTS, INVENTORY_SLOTS_INC, STORAGE_SLOTS, STORAGE_SLOTS_INC, GUILD_ID, ACADEMY_ID, RETURN_ID, STALL_AVATAR_ID, ABILITY_PET_ID, ATTACK_PET_ID, TRANSPORT_ID, AUTOPOT_HP_ACTIVE, AUTOPOT_HP_VALUE, AUTOPOT_HP_BAR, AUTOPOT_HP_SLOT, AUTOPOT_MP_ACTIVE, AUTOPOT_MP_VALUE, AUTOPOT_MP_BAR, AUTOPOT_MP_SLOT, AUTOPOT_PILL_ACTIVE, AUTOPOT_PILL_BAR, AUTOPOT_PILL_SLOT, AUTOPOT_DELAY_ACTIVE, AUTOPOT_DELAY, EXPIRATION_MARK, EXPIRATION_DATE, CREATION_DATE FROM `SRO_SHARD`.`CHAR` WHERE CHAR_NAME=?"
 	SelectCharsByAccountId     string = "SELECT ID, REF_OBJ_ID, CHAR_NAME, CHAR_SCALE, CURRENT_LEVEL, EXP, SKILL_EXP, STRENGTH, INTELLECT, STAT_POINTS, HP, MP, DELETING, UTIME, FK_REGION FROM `SRO_SHARD`.`CHAR` WHERE FK_USER=? ORDER BY CTIME ASC"
 	select_does_charname_exist string = "SELECT 1 FROM `SRO_SHARD`.`CHAR` WHERE CHAR_NAME=? LIMIT 1"
 	update_is_deleting         string = "UPDATE `SRO_SHARD`.`CHAR` SET DELETING=? WHERE CHAR_NAME=?"
@@ -167,7 +202,67 @@ func GetCharacterByName(charName string) Char {
 
 	if queryHandle.Next() {
 		char := Char{}
-		queryHandle.Scan(&char.ID, &char.RefObjID, &char.User, &char.Shard, &char.Name, &char.Scale, &char.Level, &char.Exp, &char.SkillExp, &char.Str, &char.Int, &char.StatPoints, &char.HP, &char.MP, &char.IsDeleting, &char.PosX, &char.PosY, &char.PosZ, &char.Ctime, &char.Utime, &char.Region, &char.SkillPoints, &char.MaxLevel)
+		err := queryHandle.Scan(
+			&char.ID,
+			&char.RefObjID,
+			&char.User,
+			&char.Shard,
+			&char.Name,
+			&char.Scale,
+			&char.Level,
+			&char.Exp,
+			&char.SkillExp,
+			&char.Str,
+			&char.Int,
+			&char.StatPoints,
+			&char.HP,
+			&char.MP,
+			&char.IsDeleting,
+			&char.PosX,
+			&char.PosY,
+			&char.PosZ,
+			&char.Ctime,
+			&char.Utime,
+			&char.Region,
+			&char.SkillPoints,
+			&char.MaxLevel,
+			&char.Gold,
+			&char.GoldStored,
+			&char.BerserkCount,
+			&char.PK,
+			&char.PKLevel,
+			&char.Volume,
+			&char.InventorySlots,
+			&char.InventorySlotsInc,
+			&char.StorageSlots,
+			&char.StorageSlotsInc,
+			&char.GuildID,
+			&char.AcademyID,
+			&char.ReturnID,
+			&char.StallAvatarID,
+			&char.AbilityPetID,
+			&char.AttackPetID,
+			&char.TransportID,
+			&char.AutopotHPActive,
+			&char.AutopotHPValue,
+			&char.AutopotHPBar,
+			&char.AutopotHPSlot,
+			&char.AutopotMPActive,
+			&char.AutopotMPValue,
+			&char.AutopotMPBar,
+			&char.AutopotMPSlot,
+			&char.AutopotPillActive,
+			&char.AutopotPillBar,
+			&char.AutopotPillSlot,
+			&char.AutopotDelayActive,
+			&char.AutopotDelay,
+			&char.ExpirationMark,
+			&char.ExpirationDate,
+			&char.CreationDate,
+		)
+		if err != nil {
+			logrus.Panic("Error while prasing character.")
+		}
 
 		connAcc := db.OpenConnAccount()
 		defer connAcc.Close()
