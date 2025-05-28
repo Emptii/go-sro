@@ -28,3 +28,5 @@ agent-server-binaries
 gateway-server-binaries
 
 game_client_binaries/Silkroad
+
+unhandled_packets.txt

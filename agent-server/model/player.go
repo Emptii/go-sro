@@ -9,6 +9,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"sync"
+	"time"
 )
 
 const PlayerType = "Player"
@@ -124,6 +125,40 @@ type Player struct {
 	RunSpeed            float32
 	HwanSpeed           float32
 	Masteries           map[uint32]uint8
+
+	Gold               int
+	GoldStored         int
+	BerserkCount       bool
+	PK                 int
+	PKLevel            int
+	Volume             bool
+	InventorySlots     int
+	InventorySlotsInc  bool
+	StorageSlots       int
+	StorageSlotsInc    bool
+	GuildID            int
+	AcademyID          int
+	ReturnID           int
+	StallAvatarID      int
+	AbilityPetID       int
+	AttackPetID        int
+	TransportID        int
+	AutopotHPActive    bool
+	AutopotHPValue     int
+	AutopotHPBar       bool
+	AutopotHPSlot      bool
+	AutopotMPActive    bool
+	AutopotMPValue     int
+	AutopotMPBar       bool
+	AutopotMPSlot      bool
+	AutopotPillActive  bool
+	AutopotPillBar     bool
+	AutopotPillSlot    bool
+	AutopotDelayActive bool
+	AutopotDelay       int
+	ExpirationMark     bool
+	ExpirationDate     time.Time
+	CreationDate       time.Time
 
 	/* TODO
 	- Teleport Position
