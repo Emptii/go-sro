@@ -103,13 +103,10 @@ func (h *CharSelectionJoinRequestHandler) Handle() {
 		// 4. Masteries
 		pDataBody.WriteByte(0) // mastery begin
 
-		WriteMasteryOrSkill(&pDataBody, 0x00000101, 0)
-		WriteMasteryOrSkill(&pDataBody, 0x00000102, 0)
-		WriteMasteryOrSkill(&pDataBody, 0x00000103, 0)
-		WriteMasteryOrSkill(&pDataBody, 0x00000111, 0)
-		WriteMasteryOrSkill(&pDataBody, 0x00000112, 0)
-		WriteMasteryOrSkill(&pDataBody, 0x00000113, 0)
-		WriteMasteryOrSkill(&pDataBody, 0x00000114, 0)
+		for id, lvl := range player.Masteries {
+			WriteMasteryOrSkill(&pDataBody, id, lvl)
+		}
+
 		pDataBody.WriteByte(2) // Set next master to 2 (2 seems to tell that the masteries section finished)
 		pDataBody.WriteByte(0) // unk Byte
 		// 5. Skills
@@ -213,6 +210,7 @@ func (h *CharSelectionJoinRequestHandler) Handle() {
 
 func (h *CharSelectionJoinRequestHandler) LoadPlayerData(charName string, session *server.Session) *model.Player {
 	char := model.GetCharacterByName(charName)
+	masteries := model.GetMasteriesByCharId(char.ID)
 	world := service.GetWorldServiceInstance()
 	angle := rand.Int() % 0xFFFF
 	player := &model.Player{
@@ -282,23 +280,7 @@ func (h *CharSelectionJoinRequestHandler) LoadPlayerData(charName string, sessio
 	player.RefObjectID = uint32(char.RefObjID)
 	player.UniqueID = 0
 
-	player.Masteries = make(map[uint32]uint8)
-	if player.IsEuropean() {
-		player.Masteries[513] = 0
-		player.Masteries[514] = 0
-		player.Masteries[515] = 0
-		player.Masteries[516] = 0
-		player.Masteries[517] = 0
-		player.Masteries[518] = 0
-	} else {
-		player.Masteries[257] = 0
-		player.Masteries[258] = 0
-		player.Masteries[259] = 0
-		player.Masteries[273] = 0
-		player.Masteries[274] = 0
-		player.Masteries[275] = 0
-		player.Masteries[276] = 0
-	}
+	player.Masteries = masteries
 
 	region, err := world.GetRegion(char.Region)
 

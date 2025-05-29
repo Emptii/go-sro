@@ -20,6 +20,10 @@ type ICharacter interface {
 	SendPositionUpdate()
 }
 
+func (c *Char) IsEuropean() bool {
+	return c.RefObjID >= 14875 && c.RefObjID <= 14900
+}
+
 //func (c *Character) GetLifeState() LifeState {
 //	c.RWMutex.RLock()
 //	defer c.RWMutex.RUnlock()

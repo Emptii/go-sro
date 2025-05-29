@@ -32,6 +32,7 @@ Avatar Inventory
 const (
 	SelectCharacterInventory string = "SELECT inv.SLOT, inv.FK_ITEM, it.VARIANCE, it.FK_REF_ITEM FROM `SRO_SHARD`.`INVENTORY` inv INNER JOIN `SRO_SHARD`.`ITEM` AS it ON inv.FK_ITEM = it.ID WHERE inv.FK_CHAR=?"
 	InsertInventoryItem      string = "INSERT INTO `SRO_SHARD`.`INVENTORY` (FK_CHAR, SLOT, FK_ITEM) VALUES(?, ?, ?);"
+	InsertMasteryQuery       string = "INSERT INTO `SRO_SHARD`.`MASTERIES` (`FK_CHAR`, `ID`, `LEVEL`) VALUES (?, ?, ?);"
 )
 
 // The DB should save CharID, Slot, ItemID

@@ -65,7 +65,7 @@ type Char struct {
 	AutopotDelayActive bool
 	AutopotDelay       int
 	ExpirationMark     bool
-	ExpirationDate     time.Time
+	ExpirationDate     *time.Time
 	CreationDate       time.Time
 }
 
@@ -75,8 +75,32 @@ const (
 	select_does_charname_exist string = "SELECT 1 FROM `SRO_SHARD`.`CHAR` WHERE CHAR_NAME=? LIMIT 1"
 	update_is_deleting         string = "UPDATE `SRO_SHARD`.`CHAR` SET DELETING=? WHERE CHAR_NAME=?"
 	insert_char                string = "INSERT INTO `SRO_SHARD`.`CHAR`(REF_OBJ_ID, FK_USER, FK_SHARD, CHAR_NAME, CHAR_SCALE, CURRENT_LEVEL, EXP, SKILL_EXP, STRENGTH, INTELLECT, STAT_POINTS, HP, MP, DELETING, POS_X, POS_Y, POS_Z, FK_REGION) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
-	SelectIsGm                 string = "SELECT IS_GM FROM `SRO_ACCOUNT`.`USER` WHERE ID=?"
+	//insert_char                string = "INSERT INTO `SRO_SHARD`.`CHAR`(REF_OBJ_ID,FK_USER,FK_SHARD,CHAR_NAME,CHAR_SCALE,CURRENT_LEVEL,EXP,SKILL_EXP,STRENGTH,INTELLECT,STAT_POINTS,HP,MP,DELETING,POS_X,POS_Y,POS_Z,FK_REGION,SKILL_POINTS,MAX_LEVEL,GOLD,GOLD_STORED,BERSERK_COUNT,PK,PK_LVL,VOLUME,INVENTORY_SLOTS,INVENTORY_SLOTS_INC,STORAGE_SLOTS,STORAGE_SLOTS_INC,GUILD_ID,ACADEMY_ID,RETURN_ID,STALL_AVATAR_ID,ABILITY_PET_ID,ATTACK_PET_ID,TRANSPORT_ID,AUTOPOT_HP_ACTIVE,AUTOPOT_HP_VALUE,AUTOPOT_HP_BAR,AUTOPOT_HP_SLOT,AUTOPOT_MP_ACTIVE,AUTOPOT_MP_VALUE,AUTOPOT_MP_BAR,AUTOPOT_MP_SLOT,AUTOPOT_PILL_ACTIVE,AUTOPOT_PILL_BAR,AUTOPOT_PILL_SLOT,AUTOPOT_DELAY_ACTIVE,AUTOPOT_DELAY,EXPIRATION_MARK,EXPIRATION_DATE,CREATION_DATE) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+
+	SelectIsGm              string = "SELECT IS_GM FROM `SRO_ACCOUNT`.`USER` WHERE ID=?"
+	SelectMasteriesByCharId string = "SELECT `ID`,`LEVEL` FROM `SRO_SHARD`.`MASTERIES` WHERE `FK_CHAR`=?"
 )
+
+func GetMasteriesByCharId(charId int) map[uint32]uint8 {
+	conn := db.OpenConnShard()
+	defer conn.Close()
+
+	queryHandle, err := conn.Query(SelectMasteriesByCharId, charId)
+	db.CheckError(err)
+
+	masteries := make(map[uint32]uint8)
+	for queryHandle.Next() {
+		var id uint32
+		var level uint8
+
+		err = queryHandle.Scan(&id, &level)
+		db.CheckError(err)
+
+		masteries[id] = level
+	}
+
+	return masteries
+}
 
 func GetCharactersByUserId(userid int) []Char {
 	if userid < 0 {
@@ -132,6 +156,20 @@ func CreateChar(char Char, weapon, chest, boots, pants uint32) (bool, int64) {
 	db.CheckError(err)
 
 	res, err := stmt.Exec(char.RefObjID, char.User, char.Shard, char.Name, char.Scale, char.Level, char.Exp, char.SkillExp, char.Str, char.Int, char.StatPoints, char.HP, char.MP, char.IsDeleting, char.PosX, char.PosY, char.PosZ, char.Region)
+	// res, err := stmt.Exec(
+	// 	char.RefObjID, char.User, char.Shard, char.Name, char.Scale, char.Level,
+	// 	char.Exp, char.SkillExp, char.Str, char.Int, char.StatPoints, char.HP, char.MP, char.IsDeleting,
+	// 	char.PosX, char.PosY, char.PosZ, char.Ctime, char.Utime, char.Region, char.SkillPoints,
+	// 	char.MaxLevel, char.Gold, char.GoldStored, char.BerserkCount, char.PK, char.PKLevel,
+	// 	char.Volume, char.InventorySlots, char.InventorySlotsInc, char.StorageSlots,
+	// 	char.StorageSlotsInc, char.GuildID, char.AcademyID, char.ReturnID, char.StallAvatarID,
+	// 	char.AbilityPetID, char.AttackPetID, char.TransportID, char.AutopotHPActive,
+	// 	char.AutopotHPValue, char.AutopotHPBar, char.AutopotHPSlot, char.AutopotMPActive,
+	// 	char.AutopotMPValue, char.AutopotMPBar, char.AutopotMPSlot, char.AutopotPillActive,
+	// 	char.AutopotPillBar, char.AutopotPillSlot, char.AutopotDelayActive,
+	// 	char.AutopotDelay, char.ExpirationMark, char.ExpirationDate, char.CreationDate,
+	// )
+
 	db.CheckError(err)
 
 	id, err := res.LastInsertId()
@@ -147,7 +185,30 @@ func CreateChar(char Char, weapon, chest, boots, pants uint32) (bool, int64) {
 	AddItemToInventory(id, bootsId, SlotBoots)
 	AddItemToInventory(id, pantsId, SlotPants)
 
+	if char.IsEuropean() {
+		InsertMastery(id, 513, 0)
+		InsertMastery(id, 514, 0)
+		InsertMastery(id, 515, 0)
+		InsertMastery(id, 516, 0)
+		InsertMastery(id, 517, 0)
+		InsertMastery(id, 518, 0)
+	} else {
+		InsertMastery(id, 257, 0)
+		InsertMastery(id, 258, 0)
+		InsertMastery(id, 259, 0)
+		InsertMastery(id, 273, 0)
+		InsertMastery(id, 274, 0)
+		InsertMastery(id, 275, 0)
+		InsertMastery(id, 276, 0)
+	}
+
 	return true, id
+}
+
+func InsertMastery(char_id int64, id uint32, level uint8) {
+	conn := db.OpenConnShard()
+	_, err := conn.Exec(InsertMasteryQuery, char_id, id, level)
+	db.CheckError(err)
 }
 
 func DoesCharNameExist(name string) bool {
