@@ -109,8 +109,14 @@ func (h *CharSelectionJoinRequestHandler) Handle() {
 
 		pDataBody.WriteByte(2) // Set next master to 2 (2 seems to tell that the masteries section finished)
 		pDataBody.WriteByte(0) // unk Byte
+
 		// 5. Skills
-		pDataBody.WriteByte(2) // nextSkill
+		for _, id := range player.Skills {
+			pDataBody.WriteByte(0x01)
+			pDataBody.WriteUInt32(id)
+			pDataBody.WriteByte(0x01)
+		}
+		pDataBody.WriteByte(2) // nextSkill || end of skills
 		// 6. Quests
 		pDataBody.WriteUInt16(1) // Completed Quest Count
 		pDataBody.WriteUInt32(1) // Completed Quest
@@ -211,6 +217,7 @@ func (h *CharSelectionJoinRequestHandler) Handle() {
 func (h *CharSelectionJoinRequestHandler) LoadPlayerData(charName string, session *server.Session) *model.Player {
 	char := model.GetCharacterByName(charName)
 	masteries := model.GetMasteriesByCharId(char.ID)
+	skills := model.GetSkillsByCharId(char.ID)
 	world := service.GetWorldServiceInstance()
 	angle := rand.Int() % 0xFFFF
 	player := &model.Player{
@@ -281,6 +288,7 @@ func (h *CharSelectionJoinRequestHandler) LoadPlayerData(charName string, sessio
 	player.UniqueID = 0
 
 	player.Masteries = masteries
+	player.Skills = skills
 
 	region, err := world.GetRegion(char.Region)
 

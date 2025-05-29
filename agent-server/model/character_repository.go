@@ -79,6 +79,7 @@ const (
 
 	SelectIsGm              string = "SELECT IS_GM FROM `SRO_ACCOUNT`.`USER` WHERE ID=?"
 	SelectMasteriesByCharId string = "SELECT `ID`,`LEVEL` FROM `SRO_SHARD`.`MASTERIES` WHERE `FK_CHAR`=?"
+	SelectSkillsByCharId    string = "SELECT `ID` FROM `SRO_SHARD`.`SKILLS` WHERE `FK_CHAR`=?"
 )
 
 func GetMasteriesByCharId(charId int) map[uint32]uint8 {
@@ -100,6 +101,25 @@ func GetMasteriesByCharId(charId int) map[uint32]uint8 {
 	}
 
 	return masteries
+}
+func GetSkillsByCharId(charId int) []uint32 {
+	conn := db.OpenConnShard()
+	defer conn.Close()
+
+	queryHandle, err := conn.Query(SelectSkillsByCharId, charId)
+	db.CheckError(err)
+
+	skills := []uint32{}
+
+	for queryHandle.Next() {
+		var id uint32
+
+		err = queryHandle.Scan(&id)
+		db.CheckError(err)
+		skills = append(skills, id)
+	}
+
+	return skills
 }
 
 func GetCharactersByUserId(userid int) []Char {

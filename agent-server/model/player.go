@@ -125,6 +125,7 @@ type Player struct {
 	RunSpeed            float32
 	HwanSpeed           float32
 	Masteries           map[uint32]uint8
+	Skills              []uint32
 
 	Gold               int
 	GoldStored         int
