@@ -220,14 +220,21 @@ func (w *WorldService) LoadSpawnDataForContinent(continent string) {
 	}
 }
 
+// RegisterMovingCharacter starts or retargets a character's movement. Clicking a new
+// target always overwrites the older target.
 func (w *WorldService) RegisterMovingCharacter(char model.ICharacter, movementData model.MovementData) {
 	w.mutex.Lock()
 	defer w.mutex.Unlock()
 
-	if w.movingObjects[char.GetUniqueID()] == nil {
-		w.movingObjects[char.GetUniqueID()] = char
-		w.movementData[char.GetUniqueID()] = &movementData
-		log.Debugf("registered moving character %d", char.GetUniqueID())
+	_, wasMoving := w.movingObjects[char.GetUniqueID()]
+
+	w.movingObjects[char.GetUniqueID()] = char
+	w.movementData[char.GetUniqueID()] = &movementData
+
+	if wasMoving {
+		log.Debugf("changing target of moving character %d", char.GetUniqueID())
+	} else {
+		log.Debugf("moving character %d", char.GetUniqueID())
 	}
 }
 
